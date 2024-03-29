@@ -1,0 +1,17 @@
+config {
+  type: "view"
+}
+SELECT 
+    media_id,
+    tweet_id,
+    display_url,
+    expanded_url,
+    indices,
+    media_key,
+    media_url,
+    media_url_https,
+    sizes,
+    type,
+    url,
+    _fivetran_synced
+FROM twitter.tweet_media
