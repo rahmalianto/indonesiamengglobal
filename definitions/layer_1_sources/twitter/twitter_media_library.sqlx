@@ -1,0 +1,22 @@
+config {
+  type: "view"
+}
+SELECT 
+    media_key,
+    created_at,
+    deleted,
+    duration,
+    file_name,
+    media_category,
+    media_status,
+    media_type,
+    media_url,
+    name,
+    original_height,
+    original_width,
+    poster_media_key,
+    poster_media_url,
+    tweeted,
+    updated_at,
+    _fivetran_synced
+FROM twitter.media_library

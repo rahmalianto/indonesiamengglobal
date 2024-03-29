@@ -1,0 +1,21 @@
+config {
+  type: "view",
+  columns: {
+    id: "id of indonesia mengglobal acount",
+  }
+}
+SELECT 
+    id,
+    updated_at,
+    approval_status,
+    business_id,
+    business_name,
+    created_at,
+    deleted,
+    industry_type,
+    name,
+    salt,
+    timezone,
+    timezone_switch_at,
+    _fivetran_synced
+FROM twitter.account_history

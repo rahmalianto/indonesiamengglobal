@@ -1,0 +1,18 @@
+config {
+  type: "view"
+}
+SELECT 
+    id,
+    updated_at,
+    account_id,
+    card_uri,
+    completed_at,
+    created_at,
+    nullcast,
+    scheduled_at,
+    scheduled_status,
+    text,
+    tweet_id,
+    user_id
+    _fivetran_synced
+FROM twitter.scheduled_tweet_history

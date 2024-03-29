@@ -1,0 +1,11 @@
+config {
+  type: "view"
+}
+SELECT 
+    id,
+    tweet_id,
+    indices,
+    name,
+    screen_name,
+    _fivetran_synced
+FROM twitter.tweet_user_mention
