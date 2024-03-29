@@ -1,0 +1,35 @@
+config {
+  type: "view"
+}
+SELECT 
+    account_id,
+    date,
+    organic_tweet_id,
+    placement,
+    app_clicks,
+    card_engagements,
+    carousel_swipes,
+    clicks,
+    engagements,
+    follows,
+    impressions,
+    likes,
+    poll_card_vote,
+    qualified_impressions,
+    replies,
+    retweets,
+    tweets_send,
+    unfollows,
+    url_clicks,
+    video_15_s_views,
+    video_3_s_100_pct_views,
+    video_6_s_views,
+    video_content_starts,
+    video_cta_clicks,
+    video_total_views,
+    video_views_100,
+    video_views_25,
+    video_views_50,
+    video_views_75,
+    _fivetran_synced
+FROM twitter.organic_tweet_report
