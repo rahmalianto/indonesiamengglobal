@@ -4,7 +4,6 @@ config {
 SELECT 
     id,
     tweet_id,
-    _fivetran_synced,
     indices,
     name,
     screen_name,
