@@ -5,7 +5,7 @@ config {
   }
 }
 SELECT 
-    id AS tweet_id,
+    id,
     account_id,
     card_uri,
     coordinates_coordinates,

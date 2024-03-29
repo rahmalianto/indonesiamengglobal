@@ -5,7 +5,7 @@ config {
   }
 }
 SELECT 
-    id AS account_history_id,
+    id,
     updated_at,
     approval_status,
     business_id,

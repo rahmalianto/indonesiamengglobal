@@ -1,0 +1,10 @@
+config {
+  type: "view"
+}
+SELECT 
+    index,
+    tweet_id,
+    indices,
+    text,
+    _fivetran_synced
+FROM twitter.tweet_hashtag
