@@ -9,8 +9,13 @@ config {
     }
 }
 
+WITH
+get_max_snapshot_date AS (
+    SELECT MAX(snapshot_date) AS max_snapshot_date
+    FROM ${self()}
+)
 SELECT 
     *,
     CURRENT_DATE() AS snapshot_date
 FROM ${ref("twitter_user_history")}
-${when(incremental(), 'WHERE snapshot_date > (SELECT MAX(snapshot_date) FROM ${self()})')}
+${when(incremental(), 'WHERE CURRENT_DATE() > (SELECT max_snapshot_date FROM get_max_snapshot_date)')}
