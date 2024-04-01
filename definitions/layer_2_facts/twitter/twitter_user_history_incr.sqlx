@@ -4,6 +4,7 @@ config {
     protected: true,
     bigquery: {
         partitionBy: "snapshot_date"
+    }
 }
 
 WITH
