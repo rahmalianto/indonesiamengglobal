@@ -1,6 +1,6 @@
 config {
     type: "incremental",
-    uniqueKey: ["id"],
+    uniqueKey: ["id", "snapshot_date"],
     protected: true,
     bigquery: {
         partitionBy: "snapshot_date"
