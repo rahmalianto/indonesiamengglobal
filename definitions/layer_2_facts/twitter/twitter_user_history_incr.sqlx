@@ -18,4 +18,4 @@ SELECT
     *,
     CURRENT_DATE() AS snapshot_date
 FROM ${ref("twitter_user_history")}
-${when(incremental(), 'WHERE CURRENT_DATE() > (SELECT max_snapshot_date FROM get_max_snapshot_date)')}
+${when(incremental(), 'WHERE CURRENT_DATE() > (SELECT DATE(max_snapshot_date) FROM get_max_snapshot_date)')}
