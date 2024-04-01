@@ -1,21 +1,19 @@
-config { 
+config {
     type: "incremental",
     uniqueKey: ["id"],
     protected: true,
     bigquery: {
-        partitionBy: "snapshot_date",
-        updatePartitionFilter:
-            "snapshot_date >= timestamp_sub(current_timestamp(), interval 24 hour)"
-    }
+        partitionBy: "snapshot_date"
 }
 
 WITH
-get_max_snapshot_date AS (
-    SELECT MAX(snapshot_date) AS max_snapshot_date
-    FROM ${self()}
-)
-SELECT 
-    *,
-    CURRENT_DATE() AS snapshot_date
-FROM ${ref("twitter_user_history")}
-${when(incremental(), 'WHERE CURRENT_DATE() > (SELECT DATE(max_snapshot_date) FROM get_max_snapshot_date)')}
+  get_max_snapshot_date AS (
+  SELECT
+    MAX(snapshot_date) AS max_snapshot_date
+  FROM
+    ${self()} )
+SELECT
+  *,
+  CURRENT_DATE() AS snapshot_date
+FROM
+  ${ref("twitter_user_history")} ${when(incremental(), 'WHERE CURRENT_DATE() > (SELECT DATE(max_snapshot_date) FROM get_max_snapshot_date)')}
