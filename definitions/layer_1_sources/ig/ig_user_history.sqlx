@@ -1,0 +1,15 @@
+config {
+  type: "view"
+}
+SELECT 
+    _fivetran_id, -- primary key
+    id,
+    followers_count,
+    follows_count,
+    ig_id,
+    media_count,
+    name,
+    username,
+    website,
+    _fivetran_synced
+FROM instagram_business.user_history

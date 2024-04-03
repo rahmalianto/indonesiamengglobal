@@ -1,0 +1,22 @@
+config {
+  type: "view"
+}
+SELECT 
+    _fivetran_id, -- primary key
+    id,
+    ig_id,
+    caption,
+    carousel_album_id,
+    created_time,
+    is_comment_enabled,
+    is_story,
+    media_product_type,
+    media_type,
+    media_url,
+    permalink,
+    shortcode,
+    thumbnail_url,
+    user_id,
+    username,
+    _fivetran_synced
+FROM instagram_business.media_history
