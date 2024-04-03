@@ -1,0 +1,22 @@
+config {
+  type: "view"
+}
+SELECT 
+    _fivetran_id, -- primary key
+    id,
+    date,
+    email_contacts,
+    follower_count,
+    get_directions_clicks,
+    impressions,
+    impressions_28_d,
+    impressions_7_d,
+    phone_call_clicks,
+    profile_views,
+    reach,
+    reach_28_d,
+    reach_7_d,
+    text_message_clicks,
+    website_clicks,
+    _fivetran_synced
+FROM instagram_business.user_insights

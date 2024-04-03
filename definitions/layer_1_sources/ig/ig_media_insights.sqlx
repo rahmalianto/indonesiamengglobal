@@ -1,0 +1,35 @@
+config {
+  type: "view"
+}
+SELECT 
+    _fivetran_id, -- primary key
+    id,
+    carousel_album_engagement,
+    carousel_album_impressions,
+    carousel_album_reach,
+    carousel_album_saved,
+    carousel_album_video_views,
+    comment_count,
+    like_count,
+    navigation,
+    reel_comments,
+    reel_likes,
+    reel_plays,
+    reel_reach,
+    reel_saved,
+    reel_shares,
+    reel_total_interactions,
+    story_exits,
+    story_impressions,
+    story_reach,
+    story_replies,
+    story_swipe_forward,
+    story_taps_back,
+    story_taps_forward,
+    video_photo_engagement,
+    video_photo_impressions,
+    video_photo_reach,
+    video_photo_saved,
+    video_views,
+    _fivetran_synced
+FROM instagram_business.media_insights
