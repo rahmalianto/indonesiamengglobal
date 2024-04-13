@@ -1,0 +1,7 @@
+    config {
+      type: "declaration",
+      description: "schema can be seen at: https://docs.google.com/presentation/d/1KYUc1zxpHN_z2CmmK3QzG1O-ly4_-Gdt3meWNtVGCMY/edit#slide=id.g2c460bba921_1_0",
+      database: "indonesia-mengglobal",
+      schema: "facebook_pages",
+      name: "fb"
+    }
