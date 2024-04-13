@@ -9,7 +9,7 @@ get_tweet_report AS (
         replies,
         follows
     FROM ${ref("twitter_organic_tweet_report")}
-),
+)
 
 SELECT *
 FROM get_tweet_report
