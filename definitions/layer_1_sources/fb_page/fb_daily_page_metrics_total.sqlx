@@ -53,4 +53,4 @@ SELECT
     page_actions_post_reactions_sorry_total,
     page_actions_post_reactions_like_total
 FROM facebook_pages.daily_page_metrics_total
-WHERE page_id = '440961922623085'
+WHERE page_id = '440961922623085' --indonesia mengglobal id
