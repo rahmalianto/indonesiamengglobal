@@ -34,8 +34,7 @@ get_daily_post_performance AS (
     comment_count - COALESCE(LAG(comment_count,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_comment_count,
     navigation - COALESCE(LAG(navigation,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_navigation
   FROM ig_media_insights
-)
-,
+),
 get_daily_performance AS (
   SELECT 
     DATE(_fivetran_synced) AS report_date,
