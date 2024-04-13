@@ -1,0 +1,15 @@
+WITH 
+get_tweet_report AS (
+    SELECT 
+        date as report_date,
+        impressions,
+        engagements,
+        clicks,
+        likes,
+        replies,
+        follows
+    FROM ${ref("twitter_organic_tweet_report")}
+),
+
+SELECT *
+FROM get_tweet_report
