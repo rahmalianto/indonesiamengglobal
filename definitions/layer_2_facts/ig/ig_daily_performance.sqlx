@@ -1,0 +1,54 @@
+config {
+    type: "incremental",
+    uniqueKey: ["report_date"],
+    protected: true,
+    bigquery: {
+        partitionBy: "report_date"
+    }
+}
+
+WITH 
+get_max_report_date AS (
+  SELECT
+    MAX(report_date) AS max_report_date
+  FROM
+    ${self()} 
+),
+ig_media_insights AS (
+  SELECT  *,
+    carousel_album_impressions + story_impressions + video_photo_impressions + reel_plays AS total_impressions,
+    carousel_album_reach + reel_reach + story_reach + video_photo_reach AS total_reach,
+    carousel_album_engagement + video_photo_engagement + reel_total_interactions + story_replies AS total_engagement,
+    carousel_album_saved  + video_photo_saved + reel_saved AS total_saved
+  FROM ${ref("ig_media_insights")} 
+  ${when(incremental(), 'WHERE DATE(_fivetran_synced) >= (SELECT DATE(max_report_date) FROM get_max_report_date)')}
+),
+get_daily_post_performance AS (
+  SELECT 
+      *,
+
+      total_impressions - COALESCE(LAG(total_impressions,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_impressions,
+      total_reach - COALESCE(LAG(total_reach,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_reach,
+      total_engagement - COALESCE(LAG(total_engagement,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_engagement,
+      total_saved - COALESCE(LAG(total_saved,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_saved,
+      like_count - COALESCE(LAG(like_count,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_like_count,
+      comment_count - COALESCE(LAG(comment_count,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_comment_count,
+      navigation - COALESCE(LAG(navigation,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_navigation
+  FROM ig_media_insights
+)
+,
+get_daily_performance AS (
+  SELECT 
+    DATE(_fivetran_synced) AS report_date,
+    SUM(new_total_impressions) AS new_total_impressions,
+    SUM(new_total_reach) AS new_total_reach,
+    SUM(new_total_engagement) AS new_total_engagement,
+    SUM(new_total_saved) AS new_total_saved,
+    SUM(new_like_count) AS new_like_count,
+    SUM(new_comment_count) AS new_comment_count,
+    SUM(new_navigation) AS new_navigation
+  FROM get_daily_post_performance
+  GROUP BY 1
+)
+SELECT *
+FROM get_daily_performance
