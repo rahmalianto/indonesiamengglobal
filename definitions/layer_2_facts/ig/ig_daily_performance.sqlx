@@ -25,15 +25,14 @@ ig_media_insights AS (
 ),
 get_daily_post_performance AS (
   SELECT 
-      *,
-
-      total_impressions - COALESCE(LAG(total_impressions,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_impressions,
-      total_reach - COALESCE(LAG(total_reach,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_reach,
-      total_engagement - COALESCE(LAG(total_engagement,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_engagement,
-      total_saved - COALESCE(LAG(total_saved,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_saved,
-      like_count - COALESCE(LAG(like_count,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_like_count,
-      comment_count - COALESCE(LAG(comment_count,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_comment_count,
-      navigation - COALESCE(LAG(navigation,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_navigation
+    *,
+    total_impressions - COALESCE(LAG(total_impressions,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_impressions,
+    total_reach - COALESCE(LAG(total_reach,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_reach,
+    total_engagement - COALESCE(LAG(total_engagement,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_engagement,
+    total_saved - COALESCE(LAG(total_saved,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_total_saved,
+    like_count - COALESCE(LAG(like_count,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_like_count,
+    comment_count - COALESCE(LAG(comment_count,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_comment_count,
+    navigation - COALESCE(LAG(navigation,1) OVER (PARTITION BY id ORDER BY _fivetran_synced), 0) AS new_navigation
   FROM ig_media_insights
 )
 ,
