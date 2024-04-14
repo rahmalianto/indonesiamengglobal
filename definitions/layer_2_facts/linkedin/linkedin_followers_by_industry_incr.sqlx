@@ -18,5 +18,5 @@ SELECT
   *,
   CURRENT_DATE() AS snapshot_date
 FROM
-  ${ref("linkedin_followers_by_geo")} 
+  ${ref("linkedin_followers_by_industry")} 
 ${when(incremental(), 'WHERE CURRENT_DATE() > (SELECT DATE(max_snapshot_date) FROM get_max_snapshot_date)')}
