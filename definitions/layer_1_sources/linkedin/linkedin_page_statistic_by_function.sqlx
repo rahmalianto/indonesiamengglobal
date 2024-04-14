@@ -1,8 +1,8 @@
 config {
   type: "view"
 }
-SELECT_
-  fivetran_id,
+SELECT
+  _fivetran_id,
   _fivetran_synced,
   _organization_entity_urn,
   about_page_views,
