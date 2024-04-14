@@ -1,8 +1,8 @@
 config {
   type: "view"
 }
-SELECT
-  _fivetran_id,
+SELECT_
+  fivetran_id,
   _fivetran_synced,
   _organization_entity_urn,
   about_page_views,
@@ -10,7 +10,6 @@ SELECT
   all_mobile_page_views,
   all_page_views,
   careers_page_views,
-  country_id,
   desktop_about_page_views,
   desktop_careers_page_views,
   desktop_insights_page_views,
@@ -19,6 +18,7 @@ SELECT
   desktop_overview_page_views,
   desktop_people_page_views,
   desktop_products_page_views,
+  function_id,
   insights_page_views,
   jobs_page_views,
   life_at_page_views,
@@ -33,4 +33,4 @@ SELECT
   overview_page_views,
   people_page_views,
   products_page_views
-FROM linkedin_company_pages.page_statistic_by_country
+FROM linkedin_company_pages.industry
