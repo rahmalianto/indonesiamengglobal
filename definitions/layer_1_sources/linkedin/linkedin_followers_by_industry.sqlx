@@ -1,0 +1,11 @@
+config {
+  type: "view"
+}
+SELECT
+    _fivetran_id,
+    _fivetran_synced,
+    _organization_entity_urn,
+    follower_counts_organic_follower_count,
+    follower_counts_paid_follower_count,
+    industry_id
+FROM linkedin_company_pages.followers_by_industry

@@ -1,0 +1,8 @@
+config {
+  type: "view"
+}
+SELECT
+  id,
+  _fivetran_synced,
+  name
+FROM linkedin_company_pages.industry
