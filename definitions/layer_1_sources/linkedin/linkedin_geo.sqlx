@@ -1,0 +1,8 @@
+config {
+  type: "view"
+}
+SELECT
+  id,
+  _fivetran_synced,
+  value
+FROM linkedin_company_pages.geo
