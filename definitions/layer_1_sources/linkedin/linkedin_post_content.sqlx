@@ -1,0 +1,25 @@
+config {
+  type: "view"
+}
+SELECT
+    _fivetran_id,
+    post_id,
+    _fivetran_synced,
+    article_description,
+    article_source,
+    article_thumbnail,
+    article_thumbnail_alt_text,
+    article_title,
+    carousel_id,
+    media_alt_text,
+    media_id,
+    media_title,
+    multi_image_alt_text,
+    poll_question,
+    poll_settings_duration,
+    poll_settings_is_voter_visible_to_author,
+    poll_settings_vote_selection_type,
+    poll_unique_voters_count,
+    reference_id,
+    type
+FROM linkedin_company_pages.post_content

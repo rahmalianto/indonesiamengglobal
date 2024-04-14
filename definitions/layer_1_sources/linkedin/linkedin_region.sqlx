@@ -1,0 +1,10 @@
+config {
+    type: "view"
+}
+SELECT
+    id,
+    _fivetran_synced,
+    country,
+    RIGHT(country, 2) AS country_code,
+    name
+FROM linkedin_company_pages.region
