@@ -33,4 +33,4 @@ SELECT_
   overview_page_views,
   people_page_views,
   products_page_views
-FROM linkedin_company_pages.industry
+FROM linkedin_company_pages.page_statistic_by_function
