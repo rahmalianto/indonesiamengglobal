@@ -1,7 +1,7 @@
 config {
     type: "incremental",
-    uniqueKey: ["id", "snapshot_date"],
-    protected: true,
+    uniqueKey: ["region_id", "snapshot_date"],
+    protected: false,
     bigquery: {
         partitionBy: "snapshot_date"
     }
@@ -18,5 +18,5 @@ SELECT
   *,
   CURRENT_DATE() AS snapshot_date
 FROM
-  ${ref("linkedin_page_statistic_by_industry")} 
+  ${ref("linkedin_page_statistic_by_region")} 
 ${when(incremental(), 'WHERE CURRENT_DATE() > (SELECT DATE(max_snapshot_date) FROM get_max_snapshot_date)')}
