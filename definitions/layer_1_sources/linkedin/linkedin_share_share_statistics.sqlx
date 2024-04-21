@@ -1,0 +1,15 @@
+config {
+    type: "view"
+}
+SELECT
+    _fivetran_id,
+    _fivetran_synced,
+    _organization_entity_urn,
+    _share_entity_urn,
+    click_count,
+    comment_count,
+    engagement,
+    impression_count,
+    like_count,
+    share_count
+FROM linkedin_company_pages.share_share_statistics

@@ -27,4 +27,4 @@ SELECT
     response_context_parent,
     response_context_root,
     visibility
-FROM linkedin_company_pages.region
+FROM linkedin_company_pages.share_history
