@@ -1,15 +1,22 @@
 config {
     type: "view"
 }
-SELECT
-    _fivetran_id,
-    _fivetran_synced,
-    _organization_entity_urn,
-    _share_entity_urn,
-    click_count,
-    comment_count,
-    engagement,
-    impression_count,
-    like_count,
-    share_count
-FROM linkedin_company_pages.share_statistic
+WITH 
+share_statistic AS (
+    SELECT
+        _fivetran_id,
+        _fivetran_synced,
+        _organization_entity_urn,
+        _share_entity_urn,
+        SPLIT(_share_entity_urn,':')[2] AS share_type,
+        CAST(SPLIT(_share_entity_urn,':')[3] AS INT64) AS share_id,
+        click_count,
+        comment_count,
+        engagement,
+        impression_count,
+        like_count,
+        share_count
+    FROM linkedin_company_pages.share_statistic
+)
+SELECT * 
+FROM share_statistic
