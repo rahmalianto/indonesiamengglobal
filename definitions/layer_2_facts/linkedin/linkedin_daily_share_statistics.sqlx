@@ -1,0 +1,29 @@
+config {
+    type: "view"
+}
+
+WITH
+linkedin_share_history AS (
+    SELECT *
+    FROM ${ref("linkedin_share_history")} 
+),
+linkedin_share_share_statistic AS (
+    SELECT *
+    FROM ${ref("linkedin_share_share_statistic")} 
+),
+linkedin_share_statistic AS (
+    SELECT *
+    FROM ${ref("linkedin_share_statistic")} 
+)
+SELECT
+    DATE(created_time) AS created_date,
+    SUM(click_count) AS total_click_count,
+    SUM(comment_count) AS total_comment_count,
+    SUM(engagement) AS total_engagement,
+    SUM(impression_count) AS total_impression_count,
+    SUM(like_count) AS total_like_count,
+    SUM(share_count) AS total_share_count
+FROM linkedin_share_history lsh 
+-- LEFT JOIN linkedin_share_share_statistic lsss ON lsh.id = lsss.id 
+LEFT JOIN linkedin_share_statistic lss ON lsh.id= lss._share_entity_urn
+GROUP BY 1
