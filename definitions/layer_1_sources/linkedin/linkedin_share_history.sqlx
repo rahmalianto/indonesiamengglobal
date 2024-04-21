@@ -1,0 +1,30 @@
+config {
+    type: "view"
+}
+SELECT
+    id,
+    last_modified_time,
+    _fivetran_synced,
+    ad_context_dsc_ad_account,
+    ad_context_dsc_ad_type,
+    ad_context_dsc_name,
+    ad_context_dsc_status,
+    ad_context_is_dsc,
+    author,
+    commentary,
+    container_entity,
+    content_call_to_action_label,
+    content_landing_page,
+    created_time,
+    distribution_external_distribution_channels,
+    distribution_feed_distribution,
+    first_published_at,
+    is_reshare_disabled_by_author,
+    lifecycle_state,
+    lifecycle_state_info_content_status,
+    lifecycle_state_info_is_edited_by_author,
+    lifecycle_state_info_review_status,
+    response_context_parent,
+    response_context_root,
+    visibility
+FROM linkedin_company_pages.region
