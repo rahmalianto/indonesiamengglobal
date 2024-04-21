@@ -1,0 +1,8 @@
+config {
+    type: "view"
+}
+SELECT
+    share_id,
+    share_statistic_id,
+    _fivetran_synced,
+FROM linkedin_company_pages.share_share_statistic

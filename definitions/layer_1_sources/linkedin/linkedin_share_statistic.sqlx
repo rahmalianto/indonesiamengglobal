@@ -12,4 +12,4 @@ SELECT
     impression_count,
     like_count,
     share_count
-FROM linkedin_company_pages.share_statistics
+FROM linkedin_company_pages.share_statistic
